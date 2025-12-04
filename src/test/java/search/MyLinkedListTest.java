@@ -1,12 +1,8 @@
 package search;
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Iterator;
-
 class MyLinkedListTest {
-
     @Test
     void testAddAndGet() {
         MyLinkedList<String> list = new MyLinkedList<>();
@@ -15,7 +11,6 @@ class MyLinkedListTest {
         assertEquals("a", list.get(0));
         assertEquals("b", list.get(1));
     }
-
     @Test
     void testAddAtIndex() {
         MyLinkedList<String> list = new MyLinkedList<>();
@@ -26,7 +21,6 @@ class MyLinkedListTest {
         assertEquals("b", list.get(1));
         assertEquals("c", list.get(2));
     }
-
     @Test
     void testRemove() {
         MyLinkedList<String> list = new MyLinkedList<>();
@@ -38,7 +32,6 @@ class MyLinkedListTest {
         assertEquals("c", list.get(1));
         assertEquals(2, list.size());
     }
-
     @Test
     void testSizeAndIsEmpty() {
         MyLinkedList<String> list = new MyLinkedList<>();
@@ -48,7 +41,6 @@ class MyLinkedListTest {
         assertFalse(list.isEmpty());
         assertEquals(1, list.size());
     }
-
     @Test
     void testIterator() {
         MyLinkedList<String> list = new MyLinkedList<>();

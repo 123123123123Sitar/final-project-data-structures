@@ -1,31 +1,20 @@
 package search;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * A Hash Map implementation using separate chaining.
- * 
- * @param <K> the type of keys
- * @param <V> the type of values
- */
 public class MyHashMap<K extends Comparable<K>, V> implements MyMap<K, V> {
-
     private static final int INITIAL_CAPACITY = 16;
     private LinkedList<Entry<K, V>>[] table;
     private int size;
-
     private static class Entry<K, V> {
         K key;
         V value;
-
         Entry(K key, V value) {
             this.key = key;
             this.value = value;
         }
     }
-
     @SuppressWarnings("unchecked")
     public MyHashMap() {
         table = new LinkedList[INITIAL_CAPACITY];
@@ -34,11 +23,9 @@ public class MyHashMap<K extends Comparable<K>, V> implements MyMap<K, V> {
         }
         size = 0;
     }
-
     private int hash(K key) {
         return Math.abs(key.hashCode()) % table.length;
     }
-
     @Override
     public void put(K key, V value) {
         int index = hash(key);
@@ -54,7 +41,6 @@ public class MyHashMap<K extends Comparable<K>, V> implements MyMap<K, V> {
             resize();
         }
     }
-
     @Override
     public V get(K key) {
         int index = hash(key);
@@ -65,12 +51,10 @@ public class MyHashMap<K extends Comparable<K>, V> implements MyMap<K, V> {
         }
         return null;
     }
-
     @Override
     public boolean containsKey(K key) {
         return get(key) != null;
     }
-
     @Override
     public void remove(K key) {
         int index = hash(key);
@@ -86,17 +70,14 @@ public class MyHashMap<K extends Comparable<K>, V> implements MyMap<K, V> {
             size--;
         }
     }
-
     @Override
     public int size() {
         return size;
     }
-
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
-
     @Override
     public List<K> keys() {
         List<K> list = new ArrayList<>();
@@ -107,7 +88,6 @@ public class MyHashMap<K extends Comparable<K>, V> implements MyMap<K, V> {
         }
         return list;
     }
-
     @SuppressWarnings("unchecked")
     private void resize() {
         LinkedList<Entry<K, V>>[] oldTable = table;

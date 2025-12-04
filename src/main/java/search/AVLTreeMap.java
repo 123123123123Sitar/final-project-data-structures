@@ -1,18 +1,10 @@
 package search;
 
-/**
- * An AVL Tree implementation of MyMap.
- * 
- * @param <K> the type of keys
- * @param <V> the type of values
- */
 public class AVLTreeMap<K extends Comparable<K>, V> extends BSTMap<K, V> {
-
     @Override
     public void put(K key, V value) {
         root = put(root, key, value);
     }
-
     private Node<K, V> put(Node<K, V> node, K key, V value) {
         if (node == null) {
             size++;
@@ -30,7 +22,6 @@ public class AVLTreeMap<K extends Comparable<K>, V> extends BSTMap<K, V> {
         updateHeight(node);
         return balance(node);
     }
-
     @Override
     public void remove(K key) {
         if (containsKey(key)) {
@@ -38,7 +29,6 @@ public class AVLTreeMap<K extends Comparable<K>, V> extends BSTMap<K, V> {
             size--;
         }
     }
-
     private Node<K, V> remove(Node<K, V> node, K key) {
         if (node == null) {
             return null;
@@ -63,14 +53,12 @@ public class AVLTreeMap<K extends Comparable<K>, V> extends BSTMap<K, V> {
         updateHeight(node);
         return balance(node);
     }
-
     private Node<K, V> min(Node<K, V> node) {
         if (node.left == null) {
             return node;
         }
         return min(node.left);
     }
-
     private Node<K, V> removeMin(Node<K, V> node) {
         if (node.left == null) {
             return node.right;
@@ -79,19 +67,15 @@ public class AVLTreeMap<K extends Comparable<K>, V> extends BSTMap<K, V> {
         updateHeight(node);
         return balance(node);
     }
-
     private int height(Node<K, V> node) {
         return node == null ? 0 : node.height;
     }
-
     private void updateHeight(Node<K, V> node) {
         node.height = 1 + Math.max(height(node.left), height(node.right));
     }
-
     private int balanceFactor(Node<K, V> node) {
         return height(node.left) - height(node.right);
     }
-
     private Node<K, V> balance(Node<K, V> node) {
         if (balanceFactor(node) > 1) {
             if (balanceFactor(node.left) < 0) {
@@ -107,7 +91,6 @@ public class AVLTreeMap<K extends Comparable<K>, V> extends BSTMap<K, V> {
         }
         return node;
     }
-
     private Node<K, V> rotateRight(Node<K, V> y) {
         Node<K, V> x = y.left;
         Node<K, V> T2 = x.right;
@@ -117,7 +100,6 @@ public class AVLTreeMap<K extends Comparable<K>, V> extends BSTMap<K, V> {
         updateHeight(x);
         return x;
     }
-
     private Node<K, V> rotateLeft(Node<K, V> x) {
         Node<K, V> y = x.right;
         Node<K, V> T2 = y.left;

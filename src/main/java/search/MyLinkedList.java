@@ -1,38 +1,25 @@
 package search;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/**
- * A generic singly linked list implementation.
- * @param <T> the type of elements in the list
- */
 public class MyLinkedList<T> implements Iterable<T> {
-
     private Node<T> head;
     private Node<T> tail;
     private int size;
-
     private static class Node<T> {
         T data;
         Node<T> next;
-
         Node(T data) {
             this.data = data;
             this.next = null;
         }
     }
-
     public MyLinkedList() {
         head = null;
         tail = null;
         size = 0;
     }
-
-    /**
-     * Adds an element to the end of the list.
-     * @param element the element to add
-     */
+    
     public void add(T element) {
         Node<T> newNode = new Node<>(element);
         if (isEmpty()) {
@@ -44,12 +31,7 @@ public class MyLinkedList<T> implements Iterable<T> {
         }
         size++;
     }
-
-    /**
-     * Adds an element at the specified index.
-     * @param index the index at which to add
-     * @param element the element to add
-     */
+    
     public void add(int index, T element) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
@@ -74,12 +56,7 @@ public class MyLinkedList<T> implements Iterable<T> {
         }
         size++;
     }
-
-    /**
-     * Gets the element at the specified index.
-     * @param index the index of the element to return
-     * @return the element at the specified index
-     */
+    
     public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
@@ -90,12 +67,7 @@ public class MyLinkedList<T> implements Iterable<T> {
         }
         return current.data;
     }
-
-    /**
-     * Removes the element at the specified index.
-     * @param index the index of the element to remove
-     * @return the element that was removed
-     */
+    
     public T remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
@@ -121,33 +93,22 @@ public class MyLinkedList<T> implements Iterable<T> {
         size--;
         return removedData;
     }
-
-    /**
-     * Returns the number of elements in the list.
-     * @return the number of elements
-     */
+    
     public int size() {
         return size;
     }
-
-    /**
-     * Checks if the list is empty.
-     * @return true if the list is empty, false otherwise
-     */
+    
     public boolean isEmpty() {
         return size == 0;
     }
-
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             private Node<T> current = head;
-
             @Override
             public boolean hasNext() {
                 return current != null;
             }
-
             @Override
             public T next() {
                 if (!hasNext()) {

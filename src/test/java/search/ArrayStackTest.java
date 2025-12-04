@@ -1,14 +1,9 @@
 package search;
-
 import org.junit.jupiter.api.Test;
 import java.util.EmptyStackException;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Unit tests for ArrayStack.
- */
 class ArrayStackTest {
-
     @Test
     void testPushAndPop() {
         ArrayStack<String> stack = new ArrayStack<>();
@@ -19,15 +14,13 @@ class ArrayStackTest {
         assertEquals("a", stack.peek());
         assertEquals(1, stack.size());
     }
-
     @Test
     void testPeek() {
         ArrayStack<String> stack = new ArrayStack<>();
         stack.push("a");
         assertEquals("a", stack.peek());
-        assertEquals(1, stack.size()); // Peek doesn't remove
+        assertEquals(1, stack.size()); 
     }
-
     @Test
     void testIsEmpty() {
         ArrayStack<String> stack = new ArrayStack<>();
@@ -37,19 +30,16 @@ class ArrayStackTest {
         stack.pop();
         assertTrue(stack.isEmpty());
     }
-
     @Test
     void testPopEmptyStack() {
         ArrayStack<Integer> stack = new ArrayStack<>();
         assertThrows(EmptyStackException.class, stack::pop);
     }
-
     @Test
     void testPeekEmptyStack() {
         ArrayStack<Integer> stack = new ArrayStack<>();
         assertThrows(EmptyStackException.class, stack::peek);
     }
-
     @Test
     void testResizing() {
         ArrayStack<Integer> stack = new ArrayStack<>();
